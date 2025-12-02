@@ -43,3 +43,29 @@ def demander_coup(plateau):
     return ligne, colonne
 
 
+def a_gagne(plateau, joueur):
+    # Vérifie les lignes
+    if plateau[0][0] == joueur and plateau[0][1] == joueur and plateau[0][2] == joueur:
+        return True
+    if plateau[1][0] == joueur and plateau[1][1] == joueur and plateau[1][2] == joueur:
+        return True
+    if plateau[2][0] == joueur and plateau[2][1] == joueur and plateau[2][2] == joueur:
+        return True
+
+    # Vérifie les colonnes
+    if plateau[0][0] == joueur and plateau[1][0] == joueur and plateau[2][0] == joueur:
+        return True
+    if plateau[0][1] == joueur and plateau[1][1] == joueur and plateau[2][1] == joueur:
+        return True
+    if plateau[0][2] == joueur and plateau[1][2] == joueur and plateau[2][2] == joueur:
+        return True
+
+    # Vérifie les diagonales
+    if plateau[0][0] == joueur and plateau[1][1] == joueur and plateau[2][2] == joueur:
+        return True
+    if plateau[0][2] == joueur and plateau[1][1] == joueur and plateau[2][0] == joueur:
+        return True
+
+    return False
+
+
