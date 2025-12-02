@@ -81,18 +81,4 @@ Affiche “Victoire”, “Défaite” ou “Match nul”.
 boucle_principale_pygame()
 Boucle d’affichage et d’événements.
 
-🎯 Résumé clair
 
-Tu as besoin de 23 fonctions réparties en :
-
-gestion du plateau
-
-logique joueur
-
-détection victoire
-
-IA
-
-boucle du jeu
-
-interface graphique (optionnelle)
