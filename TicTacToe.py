@@ -77,6 +77,36 @@ def plateau_plein(plateau):
     return True
 
 
+# ======= PROGRAMME PRINCIPAL =======
+
+plateau = creer_plateau()
+joueur = "X"
+
+while True:
+    afficher_plateau(plateau)
+    print("Tour du joueur :", joueur)
+
+    ligne, colonne = demander_coup(plateau)
+    plateau[ligne][colonne] = joueur
+
+    if a_gagne(plateau, joueur):
+        afficher_plateau(plateau)
+        print("Le joueur", joueur, "a gagné !")
+        break
+
+    if plateau_plein(plateau):
+        afficher_plateau(plateau)
+        print("Match nul !")
+        break
+
+    # Change de joueur
+    if joueur == "X":
+        joueur = "O"
+    else:
+        joueur = "X"
+
+
+
 
 
 
