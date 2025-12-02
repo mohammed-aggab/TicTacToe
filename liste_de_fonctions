@@ -1,4 +1,4 @@
-✅ 1. Fonctions de gestion du plateau
+1. Fonctions de gestion du plateau
 
 creer_plateau()
 Crée un plateau vide (liste de 9 cases).
@@ -15,7 +15,7 @@ Place un “X” ou un “O” dans la case donnée.
 plateau_est_plein(plateau)
 Indique s’il reste des cases vides ou non.
 
-✅ 2. Fonctions pour les joueurs
+2. Fonctions pour les joueurs
 
 tour_du_joueur(plateau, signe)
 Permet au joueur humain de choisir une case.
@@ -23,7 +23,7 @@ Permet au joueur humain de choisir une case.
 changer_signe(signe)
 Alterne : X → O ou O → X.
 
-✅ 3. Fonctions de vérification
+3. Fonctions de vérification
 
 obtenir_combinaisons_gagnantes()
 Retourne les 8 alignements possibles.
@@ -34,7 +34,7 @@ Vérifie si un joueur a gagné.
 verifier_match_nul(plateau)
 Vérifie si le plateau est plein sans gagnant.
 
-✅ 4. Fonctions pour l’IA (obligatoire dans ton PDF)
+4. Fonctions pour l’IA (obligatoire dans ton PDF)
 
 ordinateur(plateau, signe)
 La fonction imposée : retourne la case (0–8) où l’IA veut jouer.
@@ -53,7 +53,7 @@ Cherche une victoire immédiate.
 calcul_minimax(plateau, signe)
 IA imbattable (niveau expert).
 
-✅ 5. Fonctions principales du jeu
+5. Fonctions principales du jeu
 
 demarrer_jeu()
 Lance une partie complète.
@@ -64,7 +64,7 @@ Joueur vs Joueur ou Joueur vs IA.
 reinitialiser_partie()
 Remet le plateau à zéro.
 
-✅ 6. Fonctions interface graphique (si tu utilises Pygame)
+6. Fonctions interface graphique (si tu utilises Pygame)
 
 dessiner_grille()
 Dessine les lignes du plateau.
