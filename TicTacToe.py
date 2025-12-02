@@ -14,3 +14,32 @@ def afficher_plateau(plateau):
         print("-------------")
 
 
+def demander_coup(plateau):
+    # On demande une ligne et une colonne, et on recommence si ce n'est pas valide
+    ligne = input("Choisis une ligne (0, 1 ou 2) : ")
+    colonne = input("Choisis une colonne (0, 1 ou 2) : ")
+
+    # Vérifie que ce sont des nombres
+    while not ligne.isdigit() or not colonne.isdigit():
+        print("Tu dois entrer un nombre.")
+        ligne = input("Choisis une ligne (0, 1 ou 2) : ")
+        colonne = input("Choisis une colonne (0, 1 ou 2) : ")
+
+    ligne = int(ligne)
+    colonne = int(colonne)
+
+    # Vérifie que la position existe
+    while ligne < 0 or ligne > 2 or colonne < 0 or colonne > 2:
+        print("Position invalide.")
+        ligne = int(input("Choisis une ligne (0, 1 ou 2) : "))
+        colonne = int(input("Choisis une colonne (0, 1 ou 2) : "))
+
+    # Vérifie si la case est libre
+    while plateau[ligne][colonne] != " ":
+        print("Case occupée, choisis-en une autre.")
+        ligne = int(input("Choisis une ligne (0, 1 ou 2) : "))
+        colonne = int(input("Choisis une colonne (0, 1 ou 2) : "))
+
+    return ligne, colonne
+
+
