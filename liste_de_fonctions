@@ -1,0 +1,98 @@
+✅ 1. Fonctions de gestion du plateau
+
+creer_plateau()
+Crée un plateau vide (liste de 9 cases).
+
+afficher_plateau()
+Affiche le plateau en format 3×3.
+
+case_est_libre(index)
+Vérifie si une case est vide.
+
+placer_signe(plateau, index, signe)
+Place un “X” ou un “O” dans la case donnée.
+
+plateau_est_plein(plateau)
+Indique s’il reste des cases vides ou non.
+
+✅ 2. Fonctions pour les joueurs
+
+tour_du_joueur(plateau, signe)
+Permet au joueur humain de choisir une case.
+
+changer_signe(signe)
+Alterne : X → O ou O → X.
+
+✅ 3. Fonctions de vérification
+
+obtenir_combinaisons_gagnantes()
+Retourne les 8 alignements possibles.
+
+verifier_victoire(plateau, signe)
+Vérifie si un joueur a gagné.
+
+verifier_match_nul(plateau)
+Vérifie si le plateau est plein sans gagnant.
+
+✅ 4. Fonctions pour l’IA (obligatoire dans ton PDF)
+
+ordinateur(plateau, signe)
+La fonction imposée : retourne la case (0–8) où l’IA veut jouer.
+
+Pour différents niveaux d’IA :
+
+ia_jouer_aleatoirement(plateau)
+Choisit une case libre au hasard.
+
+ia_bloquer_adversaire(plateau, signe)
+Empêche l’alignement adverse.
+
+ia_tenter_gagner(plateau, signe)
+Cherche une victoire immédiate.
+
+calcul_minimax(plateau, signe)
+IA imbattable (niveau expert).
+
+✅ 5. Fonctions principales du jeu
+
+demarrer_jeu()
+Lance une partie complète.
+
+choisir_mode_de_jeu()
+Joueur vs Joueur ou Joueur vs IA.
+
+reinitialiser_partie()
+Remet le plateau à zéro.
+
+✅ 6. Fonctions interface graphique (si tu utilises Pygame)
+
+dessiner_grille()
+Dessine les lignes du plateau.
+
+dessiner_symboles(plateau)
+Affiche les X et O.
+
+obtenir_case_depuis_clic(position)
+Transforme un clic souris → numéro de case.
+
+afficher_message_fin(resultat)
+Affiche “Victoire”, “Défaite” ou “Match nul”.
+
+boucle_principale_pygame()
+Boucle d’affichage et d’événements.
+
+🎯 Résumé clair
+
+Tu as besoin de 23 fonctions réparties en :
+
+gestion du plateau
+
+logique joueur
+
+détection victoire
+
+IA
+
+boucle du jeu
+
+interface graphique (optionnelle)
