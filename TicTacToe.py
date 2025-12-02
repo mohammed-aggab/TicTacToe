@@ -68,4 +68,15 @@ def a_gagne(plateau, joueur):
 
     return False
 
+def plateau_plein(plateau):
+    # Vérifie si une case est vide
+    for ligne in plateau:
+        for case in ligne:
+            if case == " ":
+                return False
+    return True
+
+
+
+
 
