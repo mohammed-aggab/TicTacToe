@@ -1,6 +1,5 @@
 import random  # Pour que l'IA choisisse une case au hasard
 
-# ================== FONCTIONS DE BASE ==================
 
 def creer_plateau():
     plateau = [
@@ -93,7 +92,7 @@ def plateau_plein(plateau):
     return True
 
 
-# ================== IA NIVEAU 1 ==================
+# IA NIVEAU 1 
 
 def coup_ia_niveau1(plateau):
     """
@@ -108,7 +107,7 @@ def coup_ia_niveau1(plateau):
     return random.choice(cases_vides)
 
 
-# ================== IA NIVEAU 2 ==================
+#  IA NIVEAU 2
 
 def ia_bloquer_adversaire(plateau, signe_adversaire):
     """
@@ -208,7 +207,7 @@ def coup_ia_niveau3(plateau, signe_ia, signe_adversaire):
     return coup_ia_niveau1(plateau)
 
 
-# ================== PROGRAMME PRINCIPAL ==================
+# PROGRAMME PRINCIPAL 
 
 # Choix du mode de jeu
 mode = ""
