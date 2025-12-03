@@ -1,3 +1,5 @@
+import random  # Pour que l'IA choisisse une case au hasard
+
 def creer_plateau():
     plateau = [
         [" ", " ", " "],
@@ -15,7 +17,7 @@ def afficher_plateau(plateau):
 
 
 def demander_coup(plateau):
-    # On demande une ligne et une colonne, et on recommence si ce n'est pas valide
+    # Demande un coup au joueur humain
     ligne = input("Choisis une ligne (0, 1 ou 2) : ")
     colonne = input("Choisis une colonne (0, 1 ou 2) : ")
 
@@ -68,8 +70,9 @@ def a_gagne(plateau, joueur):
 
     return False
 
+
 def plateau_plein(plateau):
-    # Vérifie si une case est vide
+    # Vérifie s'il reste une case vide
     for ligne in plateau:
         for case in ligne:
             if case == " ":
@@ -77,21 +80,64 @@ def plateau_plein(plateau):
     return True
 
 
-# ======= PROGRAMME PRINCIPAL =======
+def coup_ia_niveau1(plateau):
+    """
+    IA niveau 1 : choisit une case libre au hasard.
+    """
+    cases_vides = []
+    for i in range(3):
+        for j in range(3):
+            if plateau[i][j] == " ":
+                cases_vides.append((i, j))
+
+    # On choisit une case aléatoire parmi les cases vides
+    return random.choice(cases_vides)
+
+
+
+#   PROGRAMME PRINCIPAL
+
+
+# Choix du mode de jeu
+mode = ""
+while mode not in ["1", "2"]:
+    print("Choisis le mode de jeu :")
+    print("1 - Joueur vs Joueur (1v1)")
+    print("2 - Joueur vs Ordinateur (IA niveau 1)")
+    mode = input("Ton choix (1 ou 2) : ")
+
+vs_ordi = (mode == "2")
 
 plateau = creer_plateau()
-joueur = "X"
+joueur = "X"  # Le joueur humain principal sera toujours "X"
+
+if vs_ordi:
+    print("Mode Joueur vs Ordinateur")
+    print("Tu joues avec 'X', l'ordinateur joue avec 'O'.")
+else:
+    print("Mode Joueur vs Joueur (1v1)")
 
 while True:
     afficher_plateau(plateau)
     print("Tour du joueur :", joueur)
 
-    ligne, colonne = demander_coup(plateau)
+    # Si on est en mode vs ordi et que c'est au tour de l'ordi
+    if vs_ordi and joueur == "O":
+        print("L'ordinateur réfléchit...")
+        ligne, colonne = coup_ia_niveau1(plateau)
+        print("L'ordinateur joue en :", ligne, colonne)
+    else:
+        # Tour d'un joueur humain
+        ligne, colonne = demander_coup(plateau)
+
     plateau[ligne][colonne] = joueur
 
     if a_gagne(plateau, joueur):
         afficher_plateau(plateau)
-        print("Le joueur", joueur, "a gagné !")
+        if vs_ordi and joueur == "O":
+            print("L'ordinateur a gagné !")
+        else:
+            print("Le joueur", joueur, "a gagné !")
         break
 
     if plateau_plein(plateau):
@@ -104,9 +150,3 @@ while True:
         joueur = "O"
     else:
         joueur = "X"
-
-
-
-
-
-
