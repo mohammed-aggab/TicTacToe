@@ -94,25 +94,76 @@ def coup_ia_niveau1(plateau):
     return random.choice(cases_vides)
 
 
+def ia_bloquer_adversaire(plateau, signe_adversaire):
+    """
+    Cherche une case où l'adversaire pourrait gagner au prochain coup,
+    et renvoie cette position pour la bloquer.
+    Retourne (ligne, colonne) ou None s'il n'y a rien à bloquer.
+    """
+    for i in range(3):
+        for j in range(3):
+            if plateau[i][j] == " ":
+                # On simule le coup de l'adversaire
+                plateau[i][j] = signe_adversaire
+                if a_gagne(plateau, signe_adversaire):
+                    # Il gagnerait ici -> on bloque
+                    plateau[i][j] = " "
+                    return i, j
+                # On annule la simulation
+                plateau[i][j] = " "
+    return None
+
+
+def coup_ia_niveau2(plateau, signe_ia, signe_adversaire):
+    """
+    IA niveau 2 :
+    1) Si l'IA peut gagner maintenant, elle joue le coup gagnant.
+    2) Sinon, si l'adversaire peut gagner au prochain coup, elle bloque.
+    3) Sinon, elle joue une case aléatoire (comme le niveau 1).
+    """
+    # 1) Chercher un coup gagnant pour l'IA
+    for i in range(3):
+        for j in range(3):
+            if plateau[i][j] == " ":
+                plateau[i][j] = signe_ia
+                if a_gagne(plateau, signe_ia):
+                    plateau[i][j] = " "  # On annule, on jouera vraiment ce coup après
+                    return i, j
+                plateau[i][j] = " "
+
+    # 2) Bloquer l'adversaire s'il peut gagner
+    blocage = ia_bloquer_adversaire(plateau, signe_adversaire)
+    if blocage is not None:
+        return blocage
+
+    # 3) Sinon, jouer au hasard
+    return coup_ia_niveau1(plateau)
+
 
 #   PROGRAMME PRINCIPAL
 
-
 # Choix du mode de jeu
 mode = ""
-while mode not in ["1", "2"]:
+while mode not in ["1", "2", "3"]:
     print("Choisis le mode de jeu :")
     print("1 - Joueur vs Joueur (1v1)")
     print("2 - Joueur vs Ordinateur (IA niveau 1)")
-    mode = input("Ton choix (1 ou 2) : ")
+    print("3 - Joueur vs Ordinateur (IA niveau 2)")
+    mode = input("Ton choix (1, 2 ou 3) : ")
 
-vs_ordi = (mode == "2")
+vs_ordi = (mode in ["2", "3"])
+niveau_ia = 1
+if mode == "3":
+    niveau_ia = 2
 
 plateau = creer_plateau()
 joueur = "X"  # Le joueur humain principal sera toujours "X"
 
 if vs_ordi:
-    print("Mode Joueur vs Ordinateur")
+    if niveau_ia == 1:
+        print("Mode Joueur vs Ordinateur (IA niveau 1 - aléatoire)")
+    else:
+        print("Mode Joueur vs Ordinateur (IA niveau 2 - bloque l'adversaire)")
     print("Tu joues avec 'X', l'ordinateur joue avec 'O'.")
 else:
     print("Mode Joueur vs Joueur (1v1)")
@@ -124,7 +175,10 @@ while True:
     # Si on est en mode vs ordi et que c'est au tour de l'ordi
     if vs_ordi and joueur == "O":
         print("L'ordinateur réfléchit...")
-        ligne, colonne = coup_ia_niveau1(plateau)
+        if niveau_ia == 1:
+            ligne, colonne = coup_ia_niveau1(plateau)
+        else:
+            ligne, colonne = coup_ia_niveau2(plateau, "O", "X")
         print("L'ordinateur joue en :", ligne, colonne)
     else:
         # Tour d'un joueur humain
