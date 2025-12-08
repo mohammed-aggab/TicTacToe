@@ -1,9 +1,9 @@
 import random
 import pygame
 
-# =========================================================
+
 #               FONCTIONS LOGIQUES DU MORPION
-# =========================================================
+
 
 # --- Création du plateau de jeu (3x3 cases vides) ---
 def creer_plateau():
@@ -163,9 +163,9 @@ def coup_ia_niveau3(plateau, signe_ia, signe_adversaire):
     return coup_ia_niveau1(plateau)
 
 
-# =========================================================
+
 #               VERSION CONSOLE (TEXTE)
-# =========================================================
+
 
 print("=== MORPION VERSION PYGAME + CONSOLE ===")
 print("Tape 1 pour jouer en Pygame")
@@ -228,9 +228,9 @@ if choix_mode_general == "2":
     quit()
 
 
-# =========================================================
+
 #     FONCTION POUR TROUVER LA LIGNE GAGNANTE (PYGAME)
-# =========================================================
+
 
 def trouver_ligne_gagnante(plateau, joueur):
     """
@@ -255,9 +255,9 @@ def trouver_ligne_gagnante(plateau, joueur):
     return None
 
 
-# =========================================================
+
 #                     VERSION PYGAME (GRAPHIQUE)
-# =========================================================
+
 
 # --- Initialisation de Pygame et paramètres de la fenêtre ---
 pygame.init()
@@ -281,9 +281,9 @@ police_info = pygame.font.SysFont(None, 32)     # pour les messages en bas
 # Horloge pour limiter les FPS
 horloge = pygame.time.Clock()
 
-# --------------------
+
 # MENU GRAPHIQUE DE DÉPART
-# --------------------
+
 
 # Boutons (rectangles) pour choisir le mode de jeu
 bouton_joueur_vs_joueur = pygame.Rect(150, 150, 300, 60)   # 1v1
@@ -346,9 +346,9 @@ while dans_menu:
     pygame.display.update()
 
 
-# --------------------
+
 # BOUCLE PRINCIPALE DU JEU EN PYGAME
-# --------------------
+
 
 plateau_pygame = creer_plateau()      # plateau graphique
 joueur_actuel_pygame = "X"            # X commence
@@ -430,9 +430,9 @@ while True:
         else:
             joueur_actuel_pygame = "X"  # retour au joueur humain
 
-    # --------------------
+
     # DESSIN GRAPHIQUE
-    # --------------------
+
 
     # Fond blanc
     ecran.fill(BLANC)
